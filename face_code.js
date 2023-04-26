@@ -13,6 +13,99 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
+function myface(){
+  let photoSizeX = 18;
+  let photoSizeY = 15;
+  push(); // photo
+  stroke(0);
+  strokeWeight(0.2);
+  fill(255);
+  rectMode(CENTER);
+  rect(0, 0, photoSizeX, photoSizeY);
+  pop();
+  
+
+  push();
+  noStroke();
+  fill(200);
+  angleMode(DEGREES);
+  arc(-4, 6, 4, 12, 180, 0, CHORD);
+
+  push();
+  stroke(0);
+  strokeWeight(0.2);
+  noFill();
+  rectMode(CENTER);
+  rect(0, 0, photoSizeX*0.8, photoSizeY*0.8);
+  pop();
+}
+
+function myface1 (){
+  // push(); //face
+  // noFill();
+  // stroke(0);
+  // beginShape();
+
+  // endShape();
+  // pop();
+  let eyeSizeX = 1;
+  let eyeSizeY = 2;
+
+  push(); // bounding box
+  noFill();
+  stroke(0);
+  strokeWeight(0.2);
+  rectMode(CENTER);
+  rect(0, 0, 20);
+  pop();
+
+  noStroke(); //eyes
+  fill(0);
+  ellipse(-4, -3, eyeSizeX, eyeSizeY);
+  ellipse(4, -3, eyeSizeX, eyeSizeY);
+
+  push(); //nose
+  noFill();
+  stroke(0);
+  strokeWeight(0.2);
+  translate(0, -1);
+  beginShape();
+  vertex(-2, 0);
+  vertex(0, -1.5);
+  vertex(2, -1);
+  vertex(2.5, 1);
+  vertex(-0.5, 1.8);
+  vertex(-2, 0);
+  endShape();
+  pop();
+
+  push(); //collar
+  noFill();
+  stroke(0);
+  strokeWeight(0.2);
+  beginShape();
+  vertex(-5, 3);
+  vertex(-4, 2);
+  vertex(-1.5, 1.8);
+  vertex(0, 4);
+  vertex(3, 1.3);
+  vertex(5, 2);
+  vertex(4.5, 6);
+  vertex(-4, 6);
+  vertex(-5, 3);
+  endShape();
+  pop();
+
+  push(); // face
+  angleMode(DEGREES);
+  noFill();
+  stroke(0);
+  strokeWeight(0.2);
+  arc(1, -2, 10, 15, -30, 40);
+ 
+  pop();
+}
+
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
   const bg_color3 = [71, 222, 219];
   const fg_color3 = [255, 93, 35];

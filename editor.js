@@ -83,7 +83,7 @@ function draw () {
   scale(face_scale);
 
   push();
-  if (mode == '1') {
+  if (mode == '2') {
    // draw face using values mapped from 3 sliders
    let tilt_value = map(s1, 0, 100, -90, 90);
    let mouth_value = map(s2, 0, 100, 0.5, 10);
@@ -91,14 +91,16 @@ function draw () {
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
 
-  if (mode == '2') {
+  if (mode == '1') {
      // let slider value 1 indicate thinness
-     blockyFace(s1);
+     myface(s1);
   }
   if (mode == '3') {
     simplePurpleFace();
   }
-
+  if (mode == '4') {
+    myface();
+  }
   pop();
 
   if(show_face_guide) {
