@@ -16,6 +16,8 @@
 function myface(){
   let photoSizeX = 18;
   let photoSizeY = 15;
+  let orange = color("#ed540e");
+  let yellow = color("#ffea9e");
   push(); // photo
   stroke(0);
   strokeWeight(0.2);
@@ -25,13 +27,30 @@ function myface(){
   pop();
   
 
-  push();
+  push(); //body
   noStroke();
-  fill(200);
-  angleMode(DEGREES);
-  arc(-4, 6, 4, 12, 180, 0, CHORD);
+  fill(orange);
+  rect(-5, 0, 4, 6, 2, 2, 0, 0);
+  pop();
 
   push();
+  noStroke();
+  fill(yellow);
+  arc(2.5, 0.5, 6, PI + QUARTER_PI, CHORD);
+  pop();
+
+  push(); //body ?
+  noStroke();
+  fill(orange);
+  ellipse(2.5, 0.5, 4.5);
+  ellipse(2.5, 5, 4.5, 8);
+
+
+
+  
+  
+
+  push(); // photo frame
   stroke(0);
   strokeWeight(0.2);
   noFill();
