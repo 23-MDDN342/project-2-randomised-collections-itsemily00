@@ -13,115 +13,173 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function myface(){
+function myface(eyes, mouths, pose){
+  let centerX = 0;
+  let eyeSizeX = 3;
+  let eyeSizeY = 4;
+  let frogCenterX = -3;
+  let eyeRadiX = eyeSizeX/2;
+  let eyeRadiY = eyeSizeY/2;
+  let eyeDistance = 2; 
   let photoSizeX = 18;
   let photoSizeY = 15;
-  let orange = color("#ed540e");
-  let yellow = color("#ffea9e");
-  push(); // photo
+  //colors
+  let darkGery = color("#262525");
+  let yellow = color("#fac641");
+  let creamy = color("#F0DFD9");
+  let treeColor1 = color("#9CBC4C");
+  let treeColor2 = color("#49A569");
+  let treeColor3 = color("#00887B");
+  let treeBrown = color("#a58049");
+  let treeCenterX = 3;
+  let treeCenterY = 0.5;
+
+
+
+//********Draw the photo frame********//
+// photo outer line
+  push(); 
   stroke(0);
   strokeWeight(0.2);
   fill(255);
   rectMode(CENTER);
-  rect(0, 0, photoSizeX, photoSizeY);
+  rect(centerX, 0, photoSizeX, photoSizeY);
   pop();
-  
 
-  push(); //body
+// photo background
+  push(); 
   noStroke();
-  fill(orange);
-  rect(-5, 0, 4, 6, 2, 2, 0, 0);
+  fill(creamy)
+  rectMode(CENTER);
+  rect(centerX, 0, photoSizeX*0.8, photoSizeY*0.8);
+  pop();
+
+//********Draw the frog********//
+// torso
+  noStroke(); 
+  fill(darkGery);
+  rectMode(CENTER);
+  rect(frogCenterX, 4, 4, 4);
+
+// head
+  noStroke(); 
+  fill(darkGery);
+  ellipse((frogCenterX - eyeRadiX)*0.9, 1, eyeSizeX, eyeSizeY); // space for eyes
+  ellipse((frogCenterX - eyeRadiX + eyeDistance)*0.8, 1, eyeSizeX, eyeSizeY);
+  ellipse(frogCenterX, 2.5, eyeSizeX*2, eyeSizeY*0.75); // space for mouth
+
+  fill(255); // eyes
+  ellipse(-4.1, 0.8, eyeSizeX*0.6, eyeSizeY*0.7);
+  ellipse(-1.9, 0.8, eyeSizeX*0.6, eyeSizeY*0.7);
+
+//*****eye expressions*****//
+// looking right
+  // push(); 
+  // noStroke(); // looking right
+  // fill(darkGery);
+  // ellipse(-3.7, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
+  // ellipse(-1.5, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
+  // pop();
+
+// wink eyes
+  push(); 
+  stroke(darkGery);
+  strokeWeight(0.3);
+  line(frogCenterX/0.8, 0.8, (frogCenterX - eyeRadiX)*0.9, 1); //left
+  line(frogCenterX/0.8, 0.8, (frogCenterX - eyeRadiX)*0.9, 0.6);
+
+  line((frogCenterX - eyeRadiX + eyeDistance)*0.8, 0.8, (frogCenterX - eyeRadiX + eyeDistance)*0.8, 1);
+  pop();
+
+
+//*****mouth expressions*****//
+// smile
+  noFill(); 
+  stroke(255);
+  strokeWeight(0.3);
+  // angleMode(DEGREES);
+  // arc(frogCenterX, 2.8, 2, 1, 2, 110);
+
+// circle mouth
+  ellipse(frogCenterX, 3, 0.8, 1); 
+
+//********Draw the tree********//
+  push();
+  fill(treeBrown);
+  noStroke();
+  angleMode();
+  rect(treeCenterX, treeCenterY*9, 2, 3);
   pop();
 
   push();
-  noStroke();
-  fill(yellow);
-  arc(2.5, 0.5, 6, PI + QUARTER_PI, CHORD);
+  fill(treeColor3);
+  stroke(treeColor3);
+  strokeWeight(0.5);
+  strokeJoin(ROUND);
+  translate(0, 3);
+  triangle(treeCenterX - 2.5, treeCenterY, treeCenterX, -1.5, treeCenterX + 2.5, treeCenterY);
   pop();
 
-  push(); //body ?
+  push();
+  fill(treeColor2);
+  stroke(treeColor2);
+  strokeWeight(0.5);
+  strokeJoin(ROUND);
+  translate(0, 1.5);
+  triangle(treeCenterX - 2, treeCenterY, treeCenterX, -1.5, treeCenterX + 2, treeCenterY);
+  pop();
+
+  push();
+  fill(treeColor1);
+  stroke(treeColor1);
+  strokeWeight(0.5);
+  strokeJoin(ROUND);
+  triangle(treeCenterX - 1.5, treeCenterY, treeCenterX, -1.5, treeCenterX + 1.5, treeCenterY);
+  pop();
+
+  push();
+  fill(255);
+  translate(-0.7, 0.5);
+  ellipse(treeCenterX, treeCenterY, 0.5, 1);
+  pop();
+
+  push();
+  fill(darkGery);
   noStroke();
-  fill(orange);
-  ellipse(2.5, 0.5, 4.5);
-  ellipse(2.5, 5, 4.5, 8);
+  translate(-0.7, 0.5);
+  ellipse(treeCenterX, treeCenterY, 0.3);
+  pop();
 
+  push();
+  fill(255);
+  translate(0.7, 0.5);
+  ellipse(treeCenterX, treeCenterY, 0.5, 1);
+  pop();
 
+  push();
+  fill(darkGery);
+  noStroke();
+  translate(0.7, 0.5);
+  ellipse(treeCenterX, treeCenterY, 0.3);
+  pop();
 
+  push();
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.25);
+  angleMode(DEGREES);
+  arc(treeCenterX, treeCenterY + 0.9, 0.6, 0.6, 20, 160)
   
-  
 
+
+
+//********Draw the photo frame********//
   push(); // photo frame
   stroke(0);
   strokeWeight(0.2);
   noFill();
   rectMode(CENTER);
   rect(0, 0, photoSizeX*0.8, photoSizeY*0.8);
-  pop();
-}
-
-function myface1 (){
-  // push(); //face
-  // noFill();
-  // stroke(0);
-  // beginShape();
-
-  // endShape();
-  // pop();
-  let eyeSizeX = 1;
-  let eyeSizeY = 2;
-
-  push(); // bounding box
-  noFill();
-  stroke(0);
-  strokeWeight(0.2);
-  rectMode(CENTER);
-  rect(0, 0, 20);
-  pop();
-
-  noStroke(); //eyes
-  fill(0);
-  ellipse(-4, -3, eyeSizeX, eyeSizeY);
-  ellipse(4, -3, eyeSizeX, eyeSizeY);
-
-  push(); //nose
-  noFill();
-  stroke(0);
-  strokeWeight(0.2);
-  translate(0, -1);
-  beginShape();
-  vertex(-2, 0);
-  vertex(0, -1.5);
-  vertex(2, -1);
-  vertex(2.5, 1);
-  vertex(-0.5, 1.8);
-  vertex(-2, 0);
-  endShape();
-  pop();
-
-  push(); //collar
-  noFill();
-  stroke(0);
-  strokeWeight(0.2);
-  beginShape();
-  vertex(-5, 3);
-  vertex(-4, 2);
-  vertex(-1.5, 1.8);
-  vertex(0, 4);
-  vertex(3, 1.3);
-  vertex(5, 2);
-  vertex(4.5, 6);
-  vertex(-4, 6);
-  vertex(-5, 3);
-  endShape();
-  pop();
-
-  push(); // face
-  angleMode(DEGREES);
-  noFill();
-  stroke(0);
-  strokeWeight(0.2);
-  arc(1, -2, 10, 15, -30, 40);
- 
   pop();
 }
 
@@ -164,20 +222,6 @@ function orangeAlienFace(tilt_value, eye_value, mouth_value) {
 }
 
 
-function simplePurpleFace() {
-  fill(234, 122, 244);
-  noStroke();
-  // head
-  ellipse(0, 0, 20);
-  // eyes
-  fill(255, 217, 114);
-  ellipse(-3, -3, 3);
-  ellipse( 3, -3, 3);
-}
-
-/*
- * thinness_value ranges from 0-100 and indicates how thin the face is
- */
 function blockyFace(thinness_value) {
   // head
   noStroke();
