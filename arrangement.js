@@ -10,7 +10,7 @@ let lastSwapTime = 0;
 const millisPerSwap = 3000;
 
 // global variables for colors
-const bg_color1 = [71, 222, 219];
+const bg_color1 = [250, 198, 65]; // yellow
 function setup () {
   // create the drawing canvas, save the canvas element
   let main_canvas = createCanvas(canvasWidth, canvasHeight);
@@ -56,7 +56,8 @@ function draw () {
         // center face
         let eyes = int(random(0, 2));
         let mouths = int(random(0, 2));
-        // let tilt_value = random(-45, 45);
+        let poses = int(random(0, 2));
+        let rotation = random(-5, 5);
         // let mouth_value = random(3,4);
         // let is_cyclops = random(0, 100);
 
@@ -70,7 +71,7 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myface(eyes, mouths);
+        myface(eyes, mouths, poses, rotation);
         pop();
       
     }
