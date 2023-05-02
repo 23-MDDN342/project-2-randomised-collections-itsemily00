@@ -58,6 +58,7 @@ function draw () {
         let mouths = int(random(0, 2));
         let poses = int(random(0, 2));
         let rotation = random(-5, 5);
+        let props = int(random(0, 2));
         // let mouth_value = random(3,4);
         // let is_cyclops = random(0, 100);
 
@@ -71,7 +72,7 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myface(eyes, mouths, poses, rotation);
+        myface(eyes, mouths, poses, rotation, props);
         pop();
       
     }

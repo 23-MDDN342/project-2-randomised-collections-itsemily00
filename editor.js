@@ -97,8 +97,9 @@ function draw () {
   let mouths = int(map(s2, 0, 100, 0, 2));
   let poses = int(map(s3, 0, 100, 0, 2));
   let rotation = map(s4, 0, 100, -5, 5);
+  let props = int(map(s5, 0, 100, 0, 2));
 
-  myface(eyes, mouths, poses, rotation);
+  myface(eyes, mouths, poses, rotation, props);
   }
 
   if (mode == '3') {

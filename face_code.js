@@ -13,7 +13,7 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function myface(eyes, mouths, poses, rotation){
+function myface(eyes, mouths, poses, rotation, props){
   //********Set up********//
   angleMode(DEGREES);
   rotate(rotation); 
@@ -30,6 +30,10 @@ function myface(eyes, mouths, poses, rotation){
   let darkGery = color("#262525");
   let yellow = color("#fac641");
   let creamy = color("#F0DFD9");
+  let red = color("#eb4b83");
+  let blue = color("#4bb5eb");
+
+
   let treeColor1 = color("#9CBC4C");
   let treeColor2 = color("#49A569");
   let treeColor3 = color("#00887B");
@@ -109,38 +113,26 @@ if (eyes == 0){
 
 
 
-//*****mouth expressions*****//
-if (mouths == 0){
-// smile
-  noFill(); 
-  stroke(255);
-  strokeWeight(0.3);
-  angleMode(DEGREES);
-  arc(centerX, 2.8, 2, 1, 2, 110);
-  } else if (mouths == 1){
-// circle mouth
-  noFill(); 
-  stroke(255);
-  strokeWeight(0.3);
-  ellipse(centerX, 3, 0.8, 1); 
-  } else if (mouths == 2){
-// laughing mouth
-  fill(255);
-  noStroke();
-  angleMode(DEGREES);
-  arc(centerX, 2.5, 1.5, 2, 0, 180, CHORD);
-  }
+
   
 //*****poses*****//
-if(poses == 0) {
-
-} else if (poses == 1){
+if(poses == 0) { 
+  push();
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.6);
+  angleMode(DEGREES);
+  arc(frogEyeX*1.3, 5.3, 2.5, 4, 160, 240); // arms 
+  arc(-frogEyeX*1.3, 5.3, 2.5, 4, 240, 20);
+  pop();
+} else if (poses == 1){ // peace sign
   noFill();
   stroke(darkGery);
   strokeWeight(0.6);
   strokeJoin(ROUND);
   angleMode(DEGREES);
-  arc(frogEyeX*2, 2.5, 3.5, 4, 90, 170); // arms
+  arc(frogEyeX*2, 1.9, 3.5, 4, 90, 170); // arms
+  arc(frogEyeX*-2, 4.7, 3, 1.5, 270, 90);
 
   push(); // fist
   fill(darkGery);
@@ -156,76 +148,63 @@ if(poses == 0) {
   line(-3.7, 2.5, -4, 1.9);
   line(-3.6, 2.5, -3.4, 1.9);
   pop();
+
+} else if (poses == 2){
+  push();
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.6);
+  strokeJoin(ROUND);
+  angleMode(DEGREES);
+  rotate(-20);
+  arc(frogEyeX*3.3, 3.75, 2, 1.5, 90, 270); // arms  
+  pop();
+
+  push();
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.6);
+  strokeJoin(ROUND);
+  angleMode(DEGREES);
+  arc(frogEyeX*-2.5, 3, 3, 2, 340, 120);
+  pop();
+
+  push(); // fist
+  fill(darkGery);
+  noStroke();
+  ellipse(3.9, 2.6, 0.8);  
+  pop();
+
+  ballon(4, -3, red);
 }
 
+//*****mouth expressions*****//
+if (mouths == 0){
+// smile
+  noFill(); 
+  stroke(255);
+  strokeWeight(0.3);
+  angleMode(DEGREES);
+  arc(centerX, 2.8, 2, 1, 2, 110);
+} else if (mouths == 1){
+// circle mouth
+  noFill(); 
+  stroke(255);
+  strokeWeight(0.3);
+  ellipse(centerX, 3, 0.8, 1); 
+  } else if (mouths == 2){
+// laughing mouth
+  fill(255);
+  noStroke();
+  angleMode(DEGREES);
+  arc(centerX, 2.5, 1.5, 2, 0, 180, CHORD);
+  }  
 
-// //********Draw the tree********//
-// // bole
-//   push();
-//   fill(treeBrown);
-//   noStroke();
-//   angleMode();
-//   rect(treeCenterX, treeCenterY*9, 2, 3);
-//   pop();
-// // leaves
-//   push();
-//   fill(treeColor3);
-//   stroke(treeColor3);
-//   strokeWeight(0.5);
-//   strokeJoin(ROUND);
-//   translate(0, 3);
-//   triangle(treeCenterX - 2.5, treeCenterY, treeCenterX, -1.5, treeCenterX + 2.5, treeCenterY);
-//   pop();
-
-//   push();
-//   fill(treeColor2);
-//   stroke(treeColor2);
-//   strokeWeight(0.5);
-//   strokeJoin(ROUND);
-//   translate(0, 1.5);
-//   triangle(treeCenterX - 2, treeCenterY, treeCenterX, -1.5, treeCenterX + 2, treeCenterY);
-//   pop();
-
-//   push();
-//   fill(treeColor1);
-//   stroke(treeColor1);
-//   strokeWeight(0.5);
-//   strokeJoin(ROUND);
-//   triangle(treeCenterX - 1.5, treeCenterY, treeCenterX, -1.5, treeCenterX + 1.5, treeCenterY);
-//   pop();
-// // eyes
-//   push();
-//   fill(255);
-//   translate(-0.7, 0.5);
-//   ellipse(treeCenterX, treeCenterY, 0.5, 1);
-//   pop();
-
-//   push();
-//   fill(darkGery);
-//   noStroke();
-//   translate(-0.7, 0.5);
-//   ellipse(treeCenterX, treeCenterY, 0.3);
-//   pop();
-
-//   push();
-//   fill(255);
-//   translate(0.7, 0.5);
-//   ellipse(treeCenterX, treeCenterY, 0.5, 1);
-//   pop();
-
-//   push();
-//   fill(darkGery);
-//   noStroke();
-//   translate(0.7, 0.5);
-//   ellipse(treeCenterX, treeCenterY, 0.3);
-//   pop();
-
-//   push();
-//   noFill();
-//   stroke(darkGery);
-//   strokeWeight(0.25);
-//   angleMode(DEGREES);
-//   arc(treeCenterX, treeCenterY + 0.9, 0.6, 0.6, 20, 160)
+//*****props*****//
+if (props == 0) {
+  bowtie(0, 4.2);
+} 
+  
   
 
 //********Draw the photo frame********//
@@ -236,6 +215,25 @@ if(poses == 0) {
   rectMode(CENTER);
   rect(0, 0, photoSizeX*0.8, photoSizeY*0.8);
   pop();
+}
+
+function ballon (x, y, ballonColour) {
+  
+  let darkGery = color("#262525");
+  stroke(darkGery);
+  strokeWeight(0.2);
+  strokeJoin(ROUND);
+  fill(ballonColour);
+  ellipse(x, y, 3, 4); // ballon
+  triangle(x - 0.5, y + 2.5, x, y + 2, x + 0.5, y + 2.5); // knot
+  line(x, y + 2.5, x, y + 6); // string
+}
+
+function bowtie (bowtieX, bowtieY) {
+  fill(255);
+  noStroke();
+  triangle(bowtieX - 1, bowtieY - 0.5, bowtieX - 1, bowtieY + 0.5, bowtieX, bowtieY);
+  triangle(bowtieX + 1, bowtieY - 0.5, bowtieX + 1, bowtieY + 0.5, bowtieX, bowtieY);
 }
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
