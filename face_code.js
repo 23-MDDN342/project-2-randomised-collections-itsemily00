@@ -13,7 +13,7 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function myface(eyes, mouths, pose){
+function myface(eyes){
   let centerX = 0;
   let eyeSizeX = 3;
   let eyeSizeY = 4;
@@ -73,14 +73,15 @@ function myface(eyes, mouths, pose){
   ellipse(-1.9, 0.8, eyeSizeX*0.6, eyeSizeY*0.7);
 
 //*****eye expressions*****//
+if (eyes == 1) {
 // looking right
-  // push(); 
-  // noStroke(); // looking right
-  // fill(darkGery);
-  // ellipse(-3.7, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
-  // ellipse(-1.5, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
-  // pop();
-
+  push(); 
+  noStroke();
+  fill(darkGery);
+  ellipse(-3.7, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
+  ellipse(-1.5, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
+  pop();
+} else if (eyes == 2) {
 // wink eyes
   push(); 
   stroke(darkGery);
@@ -90,6 +91,10 @@ function myface(eyes, mouths, pose){
 
   line((frogCenterX - eyeRadiX + eyeDistance)*0.8, 0.8, (frogCenterX - eyeRadiX + eyeDistance)*0.8, 1);
   pop();
+}
+
+
+
 
 
 //*****mouth expressions*****//

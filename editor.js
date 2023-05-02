@@ -93,7 +93,9 @@ function draw () {
 
   if (mode == '1') {
      // let slider value 1 indicate thinness
-     myface(s1);
+let eyes = int(map(s1, 0, 100, 1, 2));
+
+     myface(eyes);
   }
   if (mode == '3') {
     simplePurpleFace();
