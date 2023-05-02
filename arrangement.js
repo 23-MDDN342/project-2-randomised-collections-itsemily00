@@ -54,7 +54,8 @@ function draw () {
       let x = w/2 + w*j;
      
         // center face
-        let eyes = int(random(1, 2));
+        let eyes = int(random(0, 2));
+        let mouths = int(random(0, 2));
         // let tilt_value = random(-45, 45);
         // let mouth_value = random(3,4);
         // let is_cyclops = random(0, 100);
@@ -69,7 +70,7 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myface(eyes);
+        myface(eyes, mouths);
         pop();
       
     }

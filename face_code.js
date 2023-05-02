@@ -13,7 +13,8 @@
  * eye_value is an integer number of eyes: either 0, 1, 2, or 3
  * mouth_value is how open the mouth is and should generally range from 0.5 to 10
  */
-function myface(eyes){
+function myface(eyes, mouths){
+  //********set up********//
   let centerX = 0;
   let eyeSizeX = 3;
   let eyeSizeY = 4;
@@ -67,13 +68,13 @@ function myface(eyes){
   ellipse((frogCenterX - eyeRadiX)*0.9, 1, eyeSizeX, eyeSizeY); // space for eyes
   ellipse((frogCenterX - eyeRadiX + eyeDistance)*0.8, 1, eyeSizeX, eyeSizeY);
   ellipse(frogCenterX, 2.5, eyeSizeX*2, eyeSizeY*0.75); // space for mouth
-
-  fill(255); // eyes
+// eyes
+  fill(255); 
   ellipse(-4.1, 0.8, eyeSizeX*0.6, eyeSizeY*0.7);
   ellipse(-1.9, 0.8, eyeSizeX*0.6, eyeSizeY*0.7);
 
 //*****eye expressions*****//
-if (eyes == 1) {
+if (eyes == 0){
 // looking right
   push(); 
   noStroke();
@@ -81,7 +82,7 @@ if (eyes == 1) {
   ellipse(-3.7, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
   ellipse(-1.5, 0.8, eyeSizeX*0.2, eyeSizeY*0.4);
   pop();
-} else if (eyes == 2) {
+} else if (eyes == 1){
 // wink eyes
   push(); 
   stroke(darkGery);
@@ -91,6 +92,16 @@ if (eyes == 1) {
 
   line((frogCenterX - eyeRadiX + eyeDistance)*0.8, 0.8, (frogCenterX - eyeRadiX + eyeDistance)*0.8, 1);
   pop();
+} else if (eyes == 2){
+//smiley eyes
+  push();
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.3);
+  angleMode(DEGREES);
+  arc(-4.1, 1, 0.5, 0.8, 180, 0);
+  arc(-1.9, 1, 0.5, 0.8, 180, 0);
+  pop();
 }
 
 
@@ -98,24 +109,39 @@ if (eyes == 1) {
 
 
 //*****mouth expressions*****//
+if (mouths == 0){
 // smile
   noFill(); 
   stroke(255);
   strokeWeight(0.3);
-  // angleMode(DEGREES);
-  // arc(frogCenterX, 2.8, 2, 1, 2, 110);
-
+  angleMode(DEGREES);
+  arc(frogCenterX, 2.8, 2, 1, 2, 110);
+} else if (mouths == 1){
 // circle mouth
+  noFill(); 
+  stroke(255);
+  strokeWeight(0.3);
   ellipse(frogCenterX, 3, 0.8, 1); 
+} else if (mouths == 2){
+// laughing mouth
+  fill(255);
+  noStroke();
+  angleMode(DEGREES);
+  arc(frogCenterX, 2.5, 1.5, 2, 0, 180, CHORD);
+}
+
+
+
 
 //********Draw the tree********//
+// bole
   push();
   fill(treeBrown);
   noStroke();
   angleMode();
   rect(treeCenterX, treeCenterY*9, 2, 3);
   pop();
-
+// tree leaves
   push();
   fill(treeColor3);
   stroke(treeColor3);
@@ -142,33 +168,37 @@ if (eyes == 1) {
   triangle(treeCenterX - 1.5, treeCenterY, treeCenterX, -1.5, treeCenterX + 1.5, treeCenterY);
   pop();
 
-  push();
+//*****eye expressions*****//
+// tree eyes
+  push(); // left
   fill(255);
   translate(-0.7, 0.5);
   ellipse(treeCenterX, treeCenterY, 0.5, 1);
   pop();
 
-  push();
+  push(); // left pupil
   fill(darkGery);
   noStroke();
   translate(-0.7, 0.5);
   ellipse(treeCenterX, treeCenterY, 0.3);
   pop();
 
-  push();
+  push(); // right
   fill(255);
   translate(0.7, 0.5);
   ellipse(treeCenterX, treeCenterY, 0.5, 1);
   pop();
 
-  push();
+  push(); // right pupil
   fill(darkGery);
   noStroke();
   translate(0.7, 0.5);
   ellipse(treeCenterX, treeCenterY, 0.3);
   pop();
 
-  push();
+
+//********Draw the tree********//
+  push(); 
   noFill();
   stroke(darkGery);
   strokeWeight(0.25);
@@ -178,7 +208,7 @@ if (eyes == 1) {
 
 
 
-//********Draw the photo frame********//
+//*****mouths expressions*****//
   push(); // photo frame
   stroke(0);
   strokeWeight(0.2);

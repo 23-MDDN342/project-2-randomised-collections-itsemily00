@@ -92,17 +92,17 @@ function draw () {
   }
 
   if (mode == '1') {
-     // let slider value 1 indicate thinness
-let eyes = int(map(s1, 0, 100, 1, 2));
+     // let slider value 1 indicate eyes expressions
+  let eyes = int(map(s1, 0, 100, 0, 2));
+  let mouths = int(map(s2, 0, 100, 0, 2));
 
-     myface(eyes);
+  myface(eyes, mouths);
   }
+
   if (mode == '3') {
     simplePurpleFace();
   }
-  if (mode == '4') {
-    myface();
-  }
+  
   pop();
 
   if(show_face_guide) {
