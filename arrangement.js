@@ -34,6 +34,7 @@ function mouseClicked() {
 }
 
 function draw () {
+  
   if(millis() > lastSwapTime + millisPerSwap) {
     changeRandomSeed();
   }
@@ -42,24 +43,24 @@ function draw () {
   randomSeed(curRandomSeed);
 
   // clear screen
-  background(bg_color1);
+  background(bg_color1); // yellow
   noStroke();
 
-  // draw a 7x4 grid of faces
+  // draw a 3 * 1 grid of faces
   let w = canvasWidth / 3.5;
   let h = canvasHeight / 2;
-  for(let i=0; i<2; i++) {
-    for(let j=0; j<3; j++) {
+  for(let i=0; i<1; i++) { // rows
+    for(let j=0; j<3; j++) { // columns
       let y = h/2 + h*i;
       let x = w/2 + w*j;
      
         // center face
         let eyes = int(random(0, 3));
         let mouths = int(random(0, 3));
-        let poses = int(random(0, 3));
-        let rotation = random(-5, 5);
+        let poses = int(random(0, 4));
+        //let rotation = random(-5, 5);
         let props = int(random(0, 4));
-        // let mouth_value = random(3,4);
+        let rotation = int(getAveragedRandom(-5, 5, 4)); // chances towards tilted value
         // let is_cyclops = random(0, 100);
 
         // if(is_cyclops < 10) {
@@ -69,14 +70,22 @@ function draw () {
         // }
 
         push();
-        translate(x, y);
+        translate(x * 1.15, y * 2); // center the arrangement
         scale(w/25, h/25);
         
         myface(eyes, mouths, poses, rotation, props);
         pop();
-      
+
     }
   }
+}
+
+function getAveragedRandom (min, max, n) {
+  let sum = 0;
+  for(let i=0; i<n; i++){
+    sum = sum + random(min, max);
+  }
+  return sum / n;
 }
 
 function keyTyped() {
