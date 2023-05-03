@@ -72,7 +72,7 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myface(eyes, mouths, poses, rotation, props, backgroundColour);
+        myface(eyes, mouths, poses, rotation, props);
         pop();
       
     }

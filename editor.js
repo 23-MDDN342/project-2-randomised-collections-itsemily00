@@ -87,7 +87,7 @@ function draw () {
     // let slider value 1 indicate eyes expressions
  let eyes = int(map(s1, 0, 100, 0, 2));
  let mouths = int(map(s2, 0, 100, 0, 2));
- let poses = int(map(s3, 0, 100, 0, 2));
+ let poses = int(map(s3, 0, 100, 0, 3));
  let rotation = map(s4, 0, 100, -5, 5);
  let props = int(map(s5, 0, 100, 0, 3));
 

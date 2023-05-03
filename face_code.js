@@ -29,12 +29,50 @@ function myface(eyes, mouths, poses, rotation, props){
   //colors
   let darkGery = color("#262525");
   let yellow = color("#fac641");
+  let darkYellow = color("#c99d2c");
+  let brightYellow = color("#f7e988");
   let creamy = color("#F0DFD9");
   let red = color("#eb4b83");
   let blue = color("#4bb5eb");
   let green = color("#4ccfa8");
+  let redNose = color("#f0351d");
 
 //********Draw the photo frame********//
+// photo shadow
+push();
+angleMode(DEGREES);
+rotate(3);
+translate(0.7, 0.7);
+noStroke();
+fill(darkYellow);
+rectMode(CENTER);
+rect(centerX, 0, photoSizeX, photoSizeY);
+pop();
+
+// drawing photo stacks
+push(); 
+angleMode(DEGREES);
+rotate(3);
+stroke(0);
+strokeWeight(0.2);
+fill(255);
+rectMode(CENTER);
+rect(centerX, 0, photoSizeX, photoSizeY);
+pop();
+
+push(); 
+angleMode(DEGREES);
+rotate(-2);
+stroke(0);
+strokeWeight(0.2);
+fill(255);
+rectMode(CENTER);
+rect(centerX, 0, photoSizeX, photoSizeY);
+pop();
+
+
+
+
 // photo outer line
   push(); 
   stroke(0);
@@ -43,6 +81,8 @@ function myface(eyes, mouths, poses, rotation, props){
   rectMode(CENTER);
   rect(centerX, 0, photoSizeX, photoSizeY);
   pop();
+
+
 
 // photo background
   push(); 
@@ -53,15 +93,13 @@ function myface(eyes, mouths, poses, rotation, props){
   pop();
 
 //********props********//
-if (props == 2) {
+if (props == 2) { // ballon background
   ballon(-3, -1, blue);
   ballon(-5, 0, red);
   ballon(0.5, -3.8, green);
   ballon(3.8, -2.8, red);
   ballon(2.5, -2, yellow);
   ballon(5, 0, blue);
-  
-  
 }
 //********Draw the frog********//
 // torso
@@ -101,7 +139,7 @@ if (eyes == 0){
   line(frogEyeX/1.2 + eyeDistance*1.1, 0.7,frogEyeX/1.2 + eyeDistance*1.1, 0.9); // right
   pop();
 
- } else if (eyes == 2){
+} else if (eyes == 2){
 // smiley eyes
   push();
   noFill();
@@ -111,8 +149,8 @@ if (eyes == 0){
   arc(frogEyeX/0.9, 1, 0.5, 0.8, 180, 0);
   arc(frogEyeX*0.9 + eyeDistance, 1, 0.5, 0.8, 180, 0);
   pop();
-  }
 
+} 
 
 
 
@@ -127,14 +165,15 @@ if(poses == 0) {
   arc(frogEyeX*1.3, 5.3, 2.5, 4, 160, 240); // arms 
   arc(-frogEyeX*1.3, 5.3, 2.5, 4, 240, 20);
   pop();
+
 } else if (poses == 1){ // peace sign
   noFill();
   stroke(darkGery);
   strokeWeight(0.6);
   strokeJoin(ROUND);
   angleMode(DEGREES);
-  arc(frogEyeX*2, 1.9, 3.5, 4, 90, 170); // arms
-  arc(frogEyeX*-2, 4.7, 3, 1.5, 270, 90);
+  arc(frogEyeX*2, 1.9, 3.5, 4, 90, 170); // left arm
+  arc(frogEyeX*-2, 4.7, 3, 1.5, 270, 90); // right arm
 
   push(); // fist
   fill(darkGery);
@@ -151,18 +190,18 @@ if(poses == 0) {
   line(-3.6, 2.5, -3.4, 1.9);
   pop();
 
-} else if (poses == 2){
-  push();
+} else if (poses == 2){ // holding a ballon
+  push(); // left arm
   noFill();
   stroke(darkGery);
   strokeWeight(0.6);
   strokeJoin(ROUND);
   angleMode(DEGREES);
   rotate(-20);
-  arc(frogEyeX*3.3, 3.75, 2, 1.5, 90, 270); // arms  
+  arc(frogEyeX*3.3, 3.75, 2, 1.5, 90, 270);   
   pop();
 
-  push();
+  push(); // right arm
   noFill();
   stroke(darkGery);
   strokeWeight(0.6);
@@ -178,7 +217,8 @@ if(poses == 0) {
   pop();
 
   ballon(4, -3, red);
-}
+
+} 
 
 //*****mouth expressions*****//
 if (mouths == 0){
@@ -206,12 +246,40 @@ if (mouths == 0){
 if (props == 0) {
   bowtie(0, 4.2);
 } else if (props == 1) {
-  glasses(-1.1, 1.1, red);
+  glasses(-1.1, 1.1, brightYellow);
 } else if (props == 3) {
   glasses(-1.1, 1.1, blue);
 }
-  
-  
+
+//*****poses*****//
+if (poses == 3){ // holding a clown nose
+  noFill();
+  stroke(darkGery);
+  strokeWeight(0.6);
+  strokeJoin(ROUND);
+  angleMode(DEGREES);
+  arc(frogEyeX*2.6, 2.2, 2, 4, 50, 130); // left arm
+  arc(frogEyeX*-2, 4.7, 3, 1.5, 270, 90); // right arm
+
+  push(); // stick
+  noFill();
+  stroke(255);
+  strokeWeight(0.2);
+  line(-3.7, 2.8, 0, 2.4);
+  pop();
+
+  push(); // nose
+  fill(redNose);
+  noStroke();
+  ellipse(0, 2.4, 2);
+  pop();
+
+  push(); // fist
+  fill(darkGery);
+  noStroke();
+  ellipse(-3.5, 2.8, 1);  
+  pop();
+}
 
 //********Draw the photo frame********//
   push(); // photo frame
@@ -221,7 +289,9 @@ if (props == 0) {
   rectMode(CENTER);
   rect(0, 0, photoSizeX*0.8, photoSizeY*0.8);
   pop();
+
 }
+
 
 function ballon (x, y, ballonColour) {
   
@@ -260,6 +330,8 @@ function glasses (glassesX, glassesY, glassesColour) {
   line(glassesX + 2.2, glassesY, glassesX + 2.2, glassesY+1.5); 
   line(glassesX + 2.7, glassesY, glassesX + 2.7, glassesY+1.3);
 }
+
+
 
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
