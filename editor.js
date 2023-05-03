@@ -83,6 +83,18 @@ function draw () {
   scale(face_scale);
 
   push();
+  if (mode == '1') {
+    // let slider value 1 indicate eyes expressions
+ let eyes = int(map(s1, 0, 100, 0, 2));
+ let mouths = int(map(s2, 0, 100, 0, 2));
+ let poses = int(map(s3, 0, 100, 0, 2));
+ let rotation = map(s4, 0, 100, -5, 5);
+ let props = int(map(s5, 0, 100, 0, 3));
+
+
+ myface(eyes, mouths, poses, rotation, props);
+ }
+
   if (mode == '2') {
    // draw face using values mapped from 3 sliders
    let tilt_value = map(s1, 0, 100, -90, 90);
@@ -91,16 +103,7 @@ function draw () {
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
 
-  if (mode == '1') {
-     // let slider value 1 indicate eyes expressions
-  let eyes = int(map(s1, 0, 100, 0, 2));
-  let mouths = int(map(s2, 0, 100, 0, 2));
-  let poses = int(map(s3, 0, 100, 0, 2));
-  let rotation = map(s4, 0, 100, -5, 5);
-  let props = int(map(s5, 0, 100, 0, 2));
 
-  myface(eyes, mouths, poses, rotation, props);
-  }
 
   if (mode == '3') {
     simplePurpleFace();

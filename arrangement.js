@@ -46,19 +46,19 @@ function draw () {
   noStroke();
 
   // draw a 7x4 grid of faces
-  let w = canvasWidth / 7;
-  let h = canvasHeight / 4;
-  for(let i=0; i<4; i++) {
-    for(let j=0; j<7; j++) {
+  let w = canvasWidth / 3.5;
+  let h = canvasHeight / 2;
+  for(let i=0; i<2; i++) {
+    for(let j=0; j<3; j++) {
       let y = h/2 + h*i;
       let x = w/2 + w*j;
      
         // center face
-        let eyes = int(random(0, 2));
-        let mouths = int(random(0, 2));
-        let poses = int(random(0, 2));
+        let eyes = int(random(0, 3));
+        let mouths = int(random(0, 3));
+        let poses = int(random(0, 3));
         let rotation = random(-5, 5);
-        let props = int(random(0, 2));
+        let props = int(random(0, 4));
         // let mouth_value = random(3,4);
         // let is_cyclops = random(0, 100);
 
@@ -72,7 +72,7 @@ function draw () {
         translate(x, y);
         scale(w/25, h/25);
         
-        myface(eyes, mouths, poses, rotation, props);
+        myface(eyes, mouths, poses, rotation, props, backgroundColour);
         pop();
       
     }

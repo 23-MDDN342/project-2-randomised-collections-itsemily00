@@ -32,16 +32,7 @@ function myface(eyes, mouths, poses, rotation, props){
   let creamy = color("#F0DFD9");
   let red = color("#eb4b83");
   let blue = color("#4bb5eb");
-
-
-  let treeColor1 = color("#9CBC4C");
-  let treeColor2 = color("#49A569");
-  let treeColor3 = color("#00887B");
-  let treeBrown = color("#a58049");
-  let treeCenterX = 3;
-  let treeCenterY = 0.5;
-
-
+  let green = color("#4ccfa8");
 
 //********Draw the photo frame********//
 // photo outer line
@@ -56,11 +47,22 @@ function myface(eyes, mouths, poses, rotation, props){
 // photo background
   push(); 
   noStroke();
-  fill(creamy)
+  fill(creamy);
   rectMode(CENTER);
   rect(centerX, 0, photoSizeX*0.8, photoSizeY*0.8);
   pop();
 
+//********props********//
+if (props == 2) {
+  ballon(-3, -1, blue);
+  ballon(-5, 0, red);
+  ballon(0.5, -3.8, green);
+  ballon(3.8, -2.8, red);
+  ballon(2.5, -2, yellow);
+  ballon(5, 0, blue);
+  
+  
+}
 //********Draw the frog********//
 // torso
   noStroke(); 
@@ -203,7 +205,11 @@ if (mouths == 0){
 //*****props*****//
 if (props == 0) {
   bowtie(0, 4.2);
-} 
+} else if (props == 1) {
+  glasses(-1.1, 1.1, red);
+} else if (props == 3) {
+  glasses(-1.1, 1.1, blue);
+}
   
   
 
@@ -235,6 +241,26 @@ function bowtie (bowtieX, bowtieY) {
   triangle(bowtieX - 1, bowtieY - 0.5, bowtieX - 1, bowtieY + 0.5, bowtieX, bowtieY);
   triangle(bowtieX + 1, bowtieY - 0.5, bowtieX + 1, bowtieY + 0.5, bowtieX, bowtieY);
 }
+
+function glasses (glassesX, glassesY, glassesColour) {
+  noFill();
+  stroke(0.2);
+  stroke(glassesColour);
+  angleMode(DEGREES);
+// left
+  arc(glassesX, glassesY, 2, 3, 0, 180, CHORD); 
+// shades
+  line(glassesX - 0.5, glassesY, glassesX - 0.5, glassesY+1.3);
+  line(glassesX, glassesY, glassesX, glassesY+1.5); 
+  line(glassesX + 0.5, glassesY, glassesX + 0.5, glassesY+1.3);
+// right
+  arc(glassesX + 2.2, glassesY, 2, 3, 0, 180, CHORD);
+// shade
+  line(glassesX + 1.7, glassesY, glassesX + 1.7, glassesY+1.3);
+  line(glassesX + 2.2, glassesY, glassesX + 2.2, glassesY+1.5); 
+  line(glassesX + 2.7, glassesY, glassesX + 2.7, glassesY+1.3);
+}
+
 
 function orangeAlienFace(tilt_value, eye_value, mouth_value) {
   const bg_color3 = [71, 222, 219];
