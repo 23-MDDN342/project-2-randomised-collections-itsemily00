@@ -349,20 +349,3 @@ function glasses(glassesX, glassesY, glassesColour) {
     line(glassesX + 2.7, glassesY, glassesX + 2.7, glassesY + 1.3);
     pop();
 }
-
-// function orangeAlienFace(tilt_value, eye_value, mouth_value) {   const
-// bg_color3 = [71, 222, 219];   const fg_color3 = [255, 93, 35];   let headSize
-// = 20   let eyeSize = 5;   let centerX = 0;   let Iy = -4   let
-// distactBetweenEyes = 5   let MouthDrop = 7    rotation in degrees
-// angleMode(DEGREES);   rotate(tilt_value);   head   noStroke();
-// fill(fg_color3);   ellipse(centerX, 0, headSize, headSize);    2 traditonal
-// eyes   if (eye_value === 1 || eye_value == 3) {     fill(bg_color3);
-// ellipse(centerX, Iy, eyeSize-1,eyeSize);   }  middle eye   if (eye_value >=
-// 2) {     fill(bg_color3);     ellipse(centerX - distactBetweenEyes, Iy,
-// eyeSize);     ellipse(centerX + distactBetweenEyes, Iy, eyeSize );   }
-// mouth   fill(bg_color3);   ellipse(centerX, Iy + MouthDrop,
-// distactBetweenEyes, mouth_value); } function blockyFace(thinness_value) {
-// head   noStroke();   fill(134, 19, 136);   let head_width =
-// map(thinness_value, 0, 100, 8, 20);   rect(-head_width/2, -9, head_width,
-// 18);    eyes   fill(234, 122, 244);   ellipse(-2, -4, 1);   ellipse( 2, -4,
-// 1); }

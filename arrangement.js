@@ -46,7 +46,7 @@ function draw () {
   background(bg_color1); // yellow
   noStroke();
 
-  // draw a 3 * 1 grid of faces
+  // draw a 3 * 2 grid of faces
   let w = canvasWidth / 3.5;
   let h = canvasHeight / 2;
   for(let i=0; i<2; i++) { // rows
@@ -58,24 +58,15 @@ function draw () {
         let eyes = int(random(0, 3));
         let mouths = int(random(0, 3));
         let poses = int(random(0, 4));
-        //let rotation = random(-5, 5);
         let props = int(random(0, 4));
         let rotation = random(-5, 5); 
-        let backgroundColour = random(220, 250); // the photos' background colours (not the canvas' colour)
+        let backgroundColour = random(220, 250); 
         let colourvalue = random (0, 100);
         if (colourvalue < 40) {
           backgroundColour = 250;
         } else {
           backgroundColour = random(220, 249);
         }
-
-        // let is_cyclops = random(0, 100);
-
-        // if(is_cyclops < 10) {
-        //   eye_value = 1;
-        //   tilt_value = random(-5, 5);
-        //   mouth_value = random(0, 1.7);
-        // }
 
         push();
         translate(x * 1.15, y); // center the arrangement
@@ -86,14 +77,6 @@ function draw () {
 
     }
   }
-}
-
-function getAveragedRandom (min, max, n) {
-  let sum = 0;
-  for(let i=0; i<n; i++){
-    sum = sum + random(min, max);
-  }
-  return sum / n;
 }
 
 function keyTyped() {

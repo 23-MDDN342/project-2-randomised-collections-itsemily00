@@ -12,6 +12,6 @@ A) Discrete:
     3. The frog's poses. (let poses = int(random(0, 4));)
     4. Photobooth props. (let props = int(random(0, 4));)
 B) Continuous: 
-    1. The angle of the photo stack. (let rotation = int(getAveragedRandom(-5, 5, 4)); 
-    2. The background colours of the photos. (let backgroundColour = random(220, 250))
+    1. The angle of the photo stack. (let rotation = random(-5, 5); )
+    2. The background colours of the photos. (let backgroundColour = random(220, 250);)
 
