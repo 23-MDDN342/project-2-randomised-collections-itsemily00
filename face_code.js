@@ -87,13 +87,13 @@ function myface(eyes, mouths, poses, rotation, props, backgroundColour) {
 
     //********props********//
     if (props == 2) { 
-    // ballon background
-        ballon(-3, -1, blue);
-        ballon(-5, 0, red);
-        ballon(0.5, -3.8, green);
-        ballon(3.8, -2.8, red);
-        ballon(2.5, -2, yellow);
-        ballon(5, 0, blue);
+    // balloon background
+        balloon(-3, -1, blue);
+        balloon(-5, 0, red);
+        balloon(0.5, -3.8, green);
+        balloon(3.8, -2.8, red);
+        balloon(2.5, -2, yellow);
+        balloon(5, 0, blue);
     }
     //********Draw the frog********
     // torso
@@ -194,7 +194,7 @@ function myface(eyes, mouths, poses, rotation, props, backgroundColour) {
         pop();
 
     } else if (poses == 2) { 
-      // holding a ballon
+      // holding a balloon
         push(); // left arm
         noFill();
         stroke(darkGery);
@@ -220,7 +220,7 @@ function myface(eyes, mouths, poses, rotation, props, backgroundColour) {
         ellipse(3.9, 2.6, 0.8);
         pop();
 
-        ballon(4, -3, red);
+        balloon(4, -3, red);
 
     }
 
@@ -297,13 +297,13 @@ function myface(eyes, mouths, poses, rotation, props, backgroundColour) {
 
 }
 
-function ballon(x, y, ballonColour) {
+function balloon(x, y, balloonColour) {
     let darkGery = color("#262525");
     stroke(darkGery);
     strokeWeight(0.2);
     strokeJoin(ROUND);
-    fill(ballonColour);
-    ellipse(x, y, 3, 4); // ballon
+    fill(balloonColour);
+    ellipse(x, y, 3, 4); // balloon
     triangle(x - 0.5, y + 2.5, x, y + 2, x + 0.5, y + 2.5); // knot
     line(x, y + 2.5, x, y + 6); // string
 }

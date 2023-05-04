@@ -90,7 +90,7 @@ function draw () {
  let poses = int(map(s3, 0, 100, 0, 3));
  let rotation = map(s4, 0, 100, -5, 5);
  let props = int(map(s5, 0, 100, 0, 3));
- let backgroundColour = map(s6, 0, 100, 210, 230);
+ let backgroundColour = map(s6, 0, 100, 210, 250);
 
 
  myface(eyes, mouths, poses, rotation, props, backgroundColour);
@@ -104,8 +104,6 @@ function draw () {
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
 
-
-
   if (mode == '3') {
     simplePurpleFace();
   }
@@ -118,10 +116,10 @@ function draw () {
     noFill()
     stroke(0, 0, 255);
     rect(-10, -10, 20, 20);
-    line(  0, -11,  0, -10);
-    line(  0,  10,  0, 11);
-    line(-11,   0,-10,  0);
-    line( 11,   0, 10,  0);
+    line(0, -11, 0, -10);
+    line(0, 10, 0, 11);
+    line(-11, 0, -10, 0);
+    line( 11, 0, 10, 0);
   }
 
   pop();
