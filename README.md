@@ -3,6 +3,15 @@
 ## 2023 MDDN342 Assignment 2: Randomised Collections
 **This is where you talk about your project!**
 
->This starter code is just some simple faces being drawn. 
+> My project is a randomised collection of some photobooth memories of a little frog. The project is made with p5js program with interactive composition of randomised parameters, mouse-clicking on the arrangement page will randomly generates different photobooth props, facial expressions and poses, as well as different background, hence generatin different photos. All the parameters can be viewed and changed through the sliding bars on editor page to create unique photobooth memories for the little frog. The project aims to deliver a delightful, fun and engaging atomosphere for the viewers. 
 
+Randomised parameters used:
+A) Discrete:
+    1. Eyes expressions of the frog. (let eyes = int(random(0, 3));)
+    2. Mouths expressions of the frog. (let mouths = int(random(0, 3));)
+    3. The frog's poses. (let poses = int(random(0, 4));)
+    4. Photobooth props. (let props = int(random(0, 4));)
+B) Continuous: 
+    1. The angle of the photo stack. (let rotation = int(getAveragedRandom(-5, 5, 4)); 
+    2. The background colours of the photos. (let backgroundColour = random(220, 250))
 

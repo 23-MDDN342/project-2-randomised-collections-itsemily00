@@ -90,9 +90,10 @@ function draw () {
  let poses = int(map(s3, 0, 100, 0, 3));
  let rotation = map(s4, 0, 100, -5, 5);
  let props = int(map(s5, 0, 100, 0, 3));
+ let backgroundColour = map(s6, 0, 100, 210, 230);
 
 
- myface(eyes, mouths, poses, rotation, props);
+ myface(eyes, mouths, poses, rotation, props, backgroundColour);
  }
 
   if (mode == '2') {

@@ -49,7 +49,7 @@ function draw () {
   // draw a 3 * 1 grid of faces
   let w = canvasWidth / 3.5;
   let h = canvasHeight / 2;
-  for(let i=0; i<1; i++) { // rows
+  for(let i=0; i<2; i++) { // rows
     for(let j=0; j<3; j++) { // columns
       let y = h/2 + h*i;
       let x = w/2 + w*j;
@@ -60,7 +60,15 @@ function draw () {
         let poses = int(random(0, 4));
         //let rotation = random(-5, 5);
         let props = int(random(0, 4));
-        let rotation = int(getAveragedRandom(-5, 5, 4)); // chances towards tilted value
+        let rotation = random(-5, 5); 
+        let backgroundColour = random(220, 250); // the photos' background colours (not the canvas' colour)
+        let colourvalue = random (0, 100);
+        if (colourvalue < 40) {
+          backgroundColour = 250;
+        } else {
+          backgroundColour = random(220, 249);
+        }
+
         // let is_cyclops = random(0, 100);
 
         // if(is_cyclops < 10) {
@@ -70,10 +78,10 @@ function draw () {
         // }
 
         push();
-        translate(x * 1.15, y * 2); // center the arrangement
+        translate(x * 1.15, y); // center the arrangement
         scale(w/25, h/25);
         
-        myface(eyes, mouths, poses, rotation, props);
+        myface(eyes, mouths, poses, rotation, props, backgroundColour);
         pop();
 
     }
