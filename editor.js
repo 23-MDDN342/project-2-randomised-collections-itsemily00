@@ -4,7 +4,7 @@
 
 const canvasWidth = 960;
 const canvasHeight = 500;
-const bg_color = [71, 222, 219];
+const bg_color = [250, 198, 65];
 let slider1, slider2, slider3, slider4, slider5;
 let slider6, slider7, slider8, slider9, slider10;
 let faceSelector;
@@ -84,6 +84,19 @@ function draw () {
 
   push();
   if (mode == '1') {
+    // let slider value 1 indicate eyes expressions
+ let eyes = int(map(s1, 0, 100, 0, 2));
+ let mouths = int(map(s2, 0, 100, 0, 2));
+ let poses = int(map(s3, 0, 100, 0, 3));
+ let rotation = map(s4, 0, 100, -5, 5);
+ let props = int(map(s5, 0, 100, 0, 3));
+ let backgroundColour = map(s6, 0, 100, 210, 250);
+
+
+ myface(eyes, mouths, poses, rotation, props, backgroundColour);
+ }
+
+  if (mode == '2') {
    // draw face using values mapped from 3 sliders
    let tilt_value = map(s1, 0, 100, -90, 90);
    let mouth_value = map(s2, 0, 100, 0.5, 10);
@@ -91,14 +104,10 @@ function draw () {
    orangeAlienFace(tilt_value, eye_value, mouth_value);
   }
 
-  if (mode == '2') {
-     // let slider value 1 indicate thinness
-     blockyFace(s1);
-  }
   if (mode == '3') {
     simplePurpleFace();
   }
-
+  
   pop();
 
   if(show_face_guide) {
@@ -107,10 +116,10 @@ function draw () {
     noFill()
     stroke(0, 0, 255);
     rect(-10, -10, 20, 20);
-    line(  0, -11,  0, -10);
-    line(  0,  10,  0, 11);
-    line(-11,   0,-10,  0);
-    line( 11,   0, 10,  0);
+    line(0, -11, 0, -10);
+    line(0, 10, 0, 11);
+    line(-11, 0, -10, 0);
+    line( 11, 0, 10, 0);
   }
 
   pop();
